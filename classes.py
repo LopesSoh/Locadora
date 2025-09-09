@@ -2,7 +2,22 @@ class Cliente:
     pass
 
 class Item:
-    pass
+    def __init__(self, codigo: int, titulo: str):
+        self.codigo = codigo
+        self.titulo = titulo
+        self.disponivel = True
+
+    def alugar(self):
+        if self.disponivel:
+            self.disponivel = False
+            return True
+        return False
+
+    def devolver(self):
+        if not self.disponivel:
+            self.disponivel = True
+            return True
+        return False
 
 class Filme(Item):
     pass
