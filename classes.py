@@ -1,6 +1,3 @@
-class Cliente:
-    pass
-
 class Item:
     def __init__(self, codigo: int, titulo: str):
         self.codigo = codigo
@@ -24,6 +21,29 @@ class Filme(Item):
 
 class Jogos(Item):
     pass
+
+
+class Cliente:
+    def __init__(self, nome: str, cpf: str):
+        self.nome = nome
+        self.cpf = cpf
+        self.itensLocados = []
+
+    def locar(self, item: Item):
+        if item.alugar():
+            self.itensLocados.append(item)
+            return True
+        return False
+
+    def devolver(self, item: Item):
+        if item in self.itensLocados and item.devolver():
+            self.itensLocados.remove(item)
+            return True
+        return False
+
+    def listarItens(self):
+        return [item.titulo for item in self.itensLocados]
+
 
 class Locadora:
     def __init__ (self):
