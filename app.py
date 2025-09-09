@@ -48,7 +48,7 @@ while True:
                             genero = input("Gênero: ")
                             duracao = int(input("Duração (minutos): "))
                             cadastrar_filme(locadora, titulo, genero, duracao)
-                            print(f"Filme '{titulo}' cadastrado com código !")
+                            print(f"Filme '{filme.getTitulo()}' cadastrado com código {filme.getCodigo()}!")
                         except ValueError:
                             print(" Entrada inválida!")
            

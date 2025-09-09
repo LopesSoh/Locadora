@@ -18,9 +18,16 @@ def cadastrar_cliente(locadora, nome, cpf, cliente):
     
 
 def cadastrar_filme(locadora, titulo, genero, duracao):
-        filme = Filme(titulo, genero, duracao)
-        locadora.cadastrarItem(filme)
-    
+        try:
+            nome = input("Nome do cliente: ")
+            cpf = input("CPF do cliente: ")
+            cliente = Cliente(nome, cpf)
+            filme = Filme(titulo, genero, duracao)
+            locadora.cadastrarItem(filme)
+            print(f"Cliente {nome} cadastrado!")
+        except ValueError:
+            print(" Entrada inválida!")
+        
 
 
 def cadastrar_jogo(locadora):

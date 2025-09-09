@@ -37,7 +37,7 @@ class Item:
         self.__disponivel = status
 
 class Filme(Item):
-    def __init__(self, codigo: int, titulo: str, genero: str, duracao: int):
+    def __init__(self, titulo: str, genero: str, duracao: int):
         Item.__init__(self, titulo)
         self.__genero = genero
         self.__duracao = duracao
