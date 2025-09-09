@@ -13,20 +13,31 @@ def menu_cadastro():
     print("︿︿︿︿︿ 〔MENU CADASTRO〕 ︿︿︿︿︿")
     print(" 1- Cliente \n 2- Filme \n 3- Jogo \n 0- Sair ")
 
-def cadastrar_cliente(locadora, nome, cpf, cliente):
-    locadora.cadastrarCliente(cliente)
+def cadastrar_cliente(locadora):
+    try:
+        nome = input("Nome do cliente: ")
+        cpf = input("CPF do cliente: ")
+        cliente = Cliente(nome, cpf)
+        locadora.cadastrarCliente(cliente)
+        print(f"Cliente {nome} cadastrado!")
+    except ValueError:
+            print(" Entrada inválida!")
+
     
 
-def cadastrar_filme(locadora, titulo, genero, duracao):
+def cadastrar_filme(locadora):
         try:
-            nome = input("Nome do cliente: ")
-            cpf = input("CPF do cliente: ")
-            cliente = Cliente(nome, cpf)
+            titulo = input("Título: ")
+            genero = input("Gênero: ")
+            duracao = int(input("Duração (minutos): "))
             filme = Filme(titulo, genero, duracao)
             locadora.cadastrarItem(filme)
-            print(f"Cliente {nome} cadastrado!")
+            cadastrar_filme(locadora, titulo, genero, duracao)
+            print(f"Filme '{filme.getTitulo()}' cadastrado com código {filme.getCodigo()}!")
+            
         except ValueError:
-            print(" Entrada inválida!")
+            print(" Entrada inválida!")  
+        
         
 
 
