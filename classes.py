@@ -7,16 +7,15 @@ class Item:
         self.__titulo = titulo
         self.__disponivel = True
 
-
     def alugar(self):
-        if self.disponivel:
-            self.disponivel = False
+        if self.__disponivel:
+            self.__disponivel = False
             return True
         return False
 
     def devolver(self):
-        if not self.disponivel:
-            self.disponivel = True
+        if not self.__disponivel:
+            self.__disponivel = True
             return True
         return False
     
@@ -36,9 +35,10 @@ class Item:
     def setDisponivel(self, status: bool):
         self.__disponivel = status
 
+
 class Filme(Item):
     def __init__(self, titulo: str, genero: str, duracao: int):
-        Item.__init__(self, titulo)
+        Item.__init__(self, titulo)  # chamada explícita
         self.__genero = genero
         self.__duracao = duracao
 
@@ -54,9 +54,10 @@ class Filme(Item):
     def setDuracao(self, nova_duracao: int):
         self.__duracao = nova_duracao
 
+
 class Jogo(Item):
-    def __init__(self, codigo: int, titulo: str, plataforma: str, faixaEtaria: int):
-        Item.__init__(self, titulo)
+    def __init__(self, titulo: str, plataforma: str, faixaEtaria: int):
+        Item.__init__(self, titulo)  # chamada explícita
         self.__plataforma = plataforma
         self.__faixaEtaria = faixaEtaria
 
@@ -81,18 +82,18 @@ class Cliente:
 
     def locar(self, item: Item):
         if item.alugar():
-            self.itensLocados.append(item)
+            self.__itensLocados.append(item)
             return True
         return False
 
     def devolver(self, item: Item):
-        if item in self.itensLocados and item.devolver():
-            self.itensLocados.remove(item)
+        if item in self.__itensLocados and item.devolver():
+            self.__itensLocados.remove(item)
             return True
         return False
 
     def listarItens(self):
-        return [item.titulo for item in self.itensLocados]
+        return [item.getTitulo() for item in self.__itensLocados]
     
     def getNome(self):
         return self.__nome
@@ -111,31 +112,31 @@ class Cliente:
 
 
 class Locadora:
-    def __init__ (self):
+    def __init__(self):
         self.__clientes = []
-        self.__itens =[]
+        self.__itens = []
 
-    def cadastrarCliente (self, cliente:Cliente):
-        self.clientes.append(cliente)
-        print(f"Cliente {cliente.nome} cadastrado!")
+    def cadastrarCliente(self, cliente: Cliente):
+        self.__clientes.append(cliente)
+        print(f"Cliente {cliente.getNome()} cadastrado!")
 
-    def cadastrarItem (self, item:Item):
-        self.item.append(item)
-        print(f"Item {item.nome} cadastrado!")
+    def cadastrarItem(self, item: Item):
+        self.__itens.append(item)
+        print(f"Item {item.getTitulo()} cadastrado!")
 
     def listarClientes(self):
         print("•═❀═• CLIENTES CADASTRADOS •═❀═•")
-        if len(self.clientes) > 0:
-            for cliente in self.clientes:
-                print(f"- {cliente.nome} (CPF: {cliente.cpf})")
+        if len(self.__clientes) > 0:
+            for cliente in self.__clientes:
+                print(f"- {cliente.getNome()} (CPF: {cliente.getCpf()})")
         else:
             print("Nenhum cliente cadastrado.")
             
     def listarItens(self):
         print("\n •═❀═• ITENS NA LOCADORA •═❀═•")
-        if len(self.itens) > 0:
-            for item in self.itens:
-                status = "Disponível" if item.disponivel else "Alugado"
-                print(f"- {item.codigo} | {item.titulo} ({status})")
+        if len(self.__itens) > 0:
+            for item in self.__itens:
+                status = "Disponível" if item.getDisponivel() else "Alugado"
+                print(f"- {item.getCodigo()} | {item.getTitulo()} ({status})")
         else:
             print("Nenhum item cadastrado.")
