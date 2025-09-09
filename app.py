@@ -5,9 +5,11 @@ while True:
     try:
         opcao = int(input("Escolha uma opção: "))
     except ValueError:
+        LP()
         print("Entrada inválida, digite um número!")
+        LP()
         continue
-    LP()
+        
 
     match opcao:
         case 1: 

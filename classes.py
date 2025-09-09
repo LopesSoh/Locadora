@@ -1,8 +1,10 @@
 class Item:
-    def __init__(self, codigo: int, titulo: str):
-        self.__codigo = codigo
+    def __init__(self, titulo: str):
+        self.__codigo = Item._contador  
+        Item._contador += 1
         self.__titulo = titulo
         self.__disponivel = True
+
 
     def alugar(self):
         if self.disponivel:
@@ -18,13 +20,13 @@ class Item:
 
 class Filme(Item):
     def __init__(self, codigo: int, titulo: str, genero: str, duracao: int):
-        Item.__init__(self, codigo, titulo)
+        Item.__init__(self, titulo)
         self.__genero = genero
         self.__duracao = duracao
 
 class Jogos(Item):
     def __init__(self, codigo: int, titulo: str, plataforma: str, faixaEtaria: int):
-        Item.__init__(self, codigo, titulo)
+        Item.__init__(self, titulo)
         self.__plataforma = plataforma
         self.__faixaEtaria = faixaEtaria
 
