@@ -17,10 +17,16 @@ class Item:
         return False
 
 class Filme(Item):
-    pass
+    def __init__(self, codigo: int, titulo: str, genero: str, duracao: int):
+        Item.__init__(self, codigo, titulo)
+        self.genero = genero
+        self.duracao = duracao
 
 class Jogos(Item):
-    pass
+    def __init__(self, codigo: int, titulo: str, plataforma: str, faixaEtaria: int):
+        Item.__init__(self, codigo, titulo)  # idem aqui
+        self.plataforma = plataforma
+        self.faixaEtaria = faixaEtaria
 
 
 class Cliente:
