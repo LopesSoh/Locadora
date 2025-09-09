@@ -30,14 +30,30 @@ while True:
                         LP()
                         print("CADASTRAR CLIENTE")
                         LP()
-                        nome = input("Nome do cliente: ")
-                        cpf = input("CPF do cliente: ")
-                        cliente = Cliente(nome, cpf)
-                        cadastrar_cliente(locadora, nome, cpf, cliente)
+                        try:
+                            nome = input("Nome do cliente: ")
+                            cpf = input("CPF do cliente: ")
+                            cliente = Cliente(nome, cpf)
+                            cadastrar_cliente(locadora, nome, cpf, cliente)
+                            print(f"Cliente {nome} cadastrado!")
+                        except ValueError:
+                            print(" Entrada inválida!")
                     
                     case 2:
                         LP()
-                        pass
+                        print("CADASTRAR FILME")
+                        LP()
+                        try:
+                            titulo = input("Título: ")
+                            genero = input("Gênero: ")
+                            duracao = int(input("Duração (minutos): "))
+                            cadastrar_filme(locadora, titulo, genero, duracao)
+                            print(f"Filme '{titulo}' cadastrado com código!")
+                        except ValueError:
+                            print(" Entrada inválida!")
+           
+                    
+                    
                     case 3:
                         LP()
                         pass

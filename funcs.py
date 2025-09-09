@@ -15,7 +15,22 @@ def menu_cadastro():
 
 def cadastrar_cliente(locadora, nome, cpf, cliente):
     locadora.cadastrarCliente(cliente)
-    print(f"Cliente {nome} cadastrado!")
+    
+
+def cadastrar_filme(locadora, titulo, genero, duracao):
+        filme = Filme(titulo, genero, duracao)
+        locadora.cadastrarItem(filme)
+    
 
 
+def cadastrar_jogo(locadora):
+    try:
+        titulo = input("Título: ")
+        plataforma = input("Plataforma: ")
+        faixa = int(input("Faixa Etária: "))
+        jogo = Jogo(titulo, plataforma, faixa)
+        locadora.cadastrarItem(jogo)
+        print(f"Jogo '{titulo}' cadastrado com código {jogo.codigo}!")
+    except ValueError:
+        print("⚠️ Entrada inválida!")
 
