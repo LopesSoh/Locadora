@@ -1,8 +1,8 @@
 class Item:
     def __init__(self, codigo: int, titulo: str):
-        self.codigo = codigo
-        self.titulo = titulo
-        self.disponivel = True
+        self.__codigo = codigo
+        self.__titulo = titulo
+        self.__disponivel = True
 
     def alugar(self):
         if self.disponivel:
@@ -19,21 +19,21 @@ class Item:
 class Filme(Item):
     def __init__(self, codigo: int, titulo: str, genero: str, duracao: int):
         Item.__init__(self, codigo, titulo)
-        self.genero = genero
-        self.duracao = duracao
+        self.__genero = genero
+        self.__duracao = duracao
 
 class Jogos(Item):
     def __init__(self, codigo: int, titulo: str, plataforma: str, faixaEtaria: int):
-        Item.__init__(self, codigo, titulo)  # idem aqui
-        self.plataforma = plataforma
-        self.faixaEtaria = faixaEtaria
+        Item.__init__(self, codigo, titulo)
+        self.__plataforma = plataforma
+        self.__faixaEtaria = faixaEtaria
 
 
 class Cliente:
     def __init__(self, nome: str, cpf: str):
-        self.nome = nome
-        self.cpf = cpf
-        self.itensLocados = []
+        self.__nome = nome
+        self.__cpf = cpf
+        self.__itensLocados = []
 
     def locar(self, item: Item):
         if item.alugar():
