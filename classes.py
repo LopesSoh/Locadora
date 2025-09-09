@@ -1,4 +1,6 @@
 class Item:
+    _contador = 1
+
     def __init__(self, titulo: str):
         self.__codigo = Item._contador  
         Item._contador += 1
@@ -17,6 +19,22 @@ class Item:
             self.disponivel = True
             return True
         return False
+    
+    # GETS e SETS
+    def getCodigo(self):
+        return self.__codigo   # não terá set, código é fixo
+
+    def getTitulo(self):
+        return self.__titulo
+
+    def setTitulo(self, novo_titulo: str):
+        self.__titulo = novo_titulo
+
+    def getDisponivel(self):
+        return self.__disponivel
+
+    def setDisponivel(self, status: bool):
+        self.__disponivel = status
 
 class Filme(Item):
     def __init__(self, codigo: int, titulo: str, genero: str, duracao: int):
@@ -24,11 +42,35 @@ class Filme(Item):
         self.__genero = genero
         self.__duracao = duracao
 
-class Jogos(Item):
+    def getGenero(self):
+        return self.__genero
+
+    def setGenero(self, novo_genero: str):
+        self.__genero = novo_genero
+
+    def getDuracao(self):
+        return self.__duracao
+
+    def setDuracao(self, nova_duracao: int):
+        self.__duracao = nova_duracao
+
+class Jogo(Item):
     def __init__(self, codigo: int, titulo: str, plataforma: str, faixaEtaria: int):
         Item.__init__(self, titulo)
         self.__plataforma = plataforma
         self.__faixaEtaria = faixaEtaria
+
+    def getPlataforma(self):
+        return self.__plataforma
+
+    def setPlataforma(self, nova_plataforma: str):
+        self.__plataforma = nova_plataforma
+
+    def getFaixaEtaria(self):
+        return self.__faixaEtaria
+
+    def setFaixaEtaria(self, nova_faixa: int):
+        self.__faixaEtaria = nova_faixa
 
 
 class Cliente:
@@ -51,6 +93,21 @@ class Cliente:
 
     def listarItens(self):
         return [item.titulo for item in self.itensLocados]
+    
+    def getNome(self):
+        return self.__nome
+
+    def setNome(self, novo_nome: str):
+        self.__nome = novo_nome
+
+    def getCpf(self):
+        return self.__cpf
+
+    def setCpf(self, novo_cpf: str):
+        self.__cpf = novo_cpf
+
+    def getItensLocados(self):
+        return self.__itensLocados
 
 
 class Locadora:
