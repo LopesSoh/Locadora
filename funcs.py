@@ -37,9 +37,6 @@ def cadastrar_filme(locadora):
             
         except ValueError:
             print(" Entrada inválida!")  
-        
-        
-
 
 def cadastrar_jogo(locadora):
     try:
@@ -50,5 +47,5 @@ def cadastrar_jogo(locadora):
         locadora.cadastrarItem(jogo)
         print(f"Jogo '{titulo}' cadastrado com código {jogo.codigo}!")
     except ValueError:
-        print("⚠️ Entrada inválida!")
+        print("Entrada inválida!")
 

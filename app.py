@@ -40,6 +40,8 @@ while True:
             
                     case 3:
                         LP()
+                        print("CADASTRAR JOGO")
+                        cadastrar_jogo(locadora)
                         pass
                     case 0:
                         LP()
