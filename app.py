@@ -1,5 +1,7 @@
 from funcs import *
 
+
+locadora = Locadora()
 while True:
     menu_principal()
     try:
@@ -13,7 +15,36 @@ while True:
 
     match opcao:
         case 1: 
-            pass
+            while True:
+                menu_cadastro()
+                try:
+                    opcao2 = int(input("Escolha uma opção: "))
+                except ValueError:
+                    LP()
+                    print("Entrada inválida, digite um número!")
+                    LP()
+                    continue
+                
+                match opcao2:
+                    case 1:
+                        LP()
+                        print("CADASTRAR CLIENTE")
+                        LP()
+                        nome = input("Nome do cliente: ")
+                        cpf = input("CPF do cliente: ")
+                        cliente = Cliente(nome, cpf)
+                        cadastrar_cliente(locadora, nome, cpf, cliente)
+                    
+                    case 2:
+                        LP()
+                        pass
+                    case 3:
+                        LP()
+                        pass
+                    case 0:
+                        LP()
+                        break
+
         case 2: 
             pass
         case 3: 
