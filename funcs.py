@@ -3,7 +3,7 @@ import os
 
 def menu_principal():
     print("︿︿︿︿︿ 〔MENU LOCADORA〕 ︿︿︿︿︿")
-    print(" 1- Cadastrar \n 2- Listar \n 3- Alugar/Devolver \n 0- Sair ")
+    print(" 1- Cadastrar \n 2- Listar Clientes \n 3- Alugar/Devolver \n 4- Listar Itens \n 0- Sair ")
 
 def LP():
     os.system('pause')
@@ -19,7 +19,6 @@ def cadastrar_cliente(locadora):
         cpf = input("CPF do cliente: ")
         cliente = Cliente(nome, cpf)
         locadora.cadastrarCliente(cliente)
-        print(f"Cliente {nome} cadastrado!")
     except ValueError:
             print(" Entrada inválida!")
 
@@ -32,7 +31,6 @@ def cadastrar_filme(locadora):
             duracao = int(input("Duração (minutos): "))
             filme = Filme(titulo, genero, duracao)
             locadora.cadastrarItem(filme)
-            cadastrar_filme(locadora, titulo, genero, duracao)
             print(f"Filme '{filme.getTitulo()}' cadastrado com código {filme.getCodigo()}!")
             
         except ValueError:
@@ -45,7 +43,7 @@ def cadastrar_jogo(locadora):
         faixa = int(input("Faixa Etária: "))
         jogo = Jogo(titulo, plataforma, faixa)
         locadora.cadastrarItem(jogo)
-        print(f"Jogo '{titulo}' cadastrado com código {jogo.codigo}!")
+        print(f"Jogo '{titulo}' cadastrado com código {jogo.getCodigo()}!")
     except ValueError:
         print("Entrada inválida!")
 

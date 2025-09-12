@@ -48,9 +48,15 @@ while True:
                         break
 
         case 2: 
-            pass
+            LP()
+            locadora.listarClientes()
+            LP()
         case 3: 
             pass
+        case 4: 
+            LP()
+            locadora.listarItens()
+            LP()
         case 0:
             LP()
             print("Saindo... ")
