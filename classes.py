@@ -92,8 +92,13 @@ class Cliente:
             return True
         return False
 
-    def listarItens(self):
-        return [item.getTitulo() for item in self.__itensLocados]
+    def listarItensLocados(self):
+        if len(self.__itensLocados) > 0:
+            print(f"Itens locados por {self.__nome}:")
+            for item in self.__itensLocados:
+                print(f"- {item.getCodigo()} | {item.getTitulo()}")
+        else:
+            print(f"{self.__nome} não possui itens locados.")
     
     def getNome(self):
         return self.__nome

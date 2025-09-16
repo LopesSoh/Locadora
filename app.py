@@ -91,6 +91,11 @@ while True:
             LP()
             locadora.listarItens()
             LP()
+
+        case 5:
+            LP()
+            listar_itens_locados(locadora)
+            LP()
         case 0:
             LP()
             print("Saindo... ")

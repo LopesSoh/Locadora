@@ -3,7 +3,7 @@ import os
 
 def menu_principal():
     print("︿︿︿︿︿ 〔MENU LOCADORA〕 ︿︿︿︿︿")
-    print(" 1- Cadastrar \n 2- Listar Clientes \n 3- Alugar/Devolver \n 4- Listar Itens \n 0- Sair ")
+    print(" 1- Cadastrar \n 2- Listar Clientes \n 3- Alugar/Devolver \n 4- Listar Itens \n 5- Listar intens locados \n 0- Sair ")
 
 def LP():
     os.system('pause')
@@ -86,40 +86,53 @@ def alugar_item(locadora):
 
     if cliente.locar(item):
         print(f"Item '{item.getTitulo()}' alugado com sucesso para {cliente.getNome()}!")
-        LP()
     else:
         print("Esse item já está alugado.")
         LP()
 
 def devolver_item(locadora):
-                        cpf = input("Digite o CPF do cliente: ")
-                        try:
-                            codigo_item = int(input("Digite o código do item a ser devolvido: "))
-                        except ValueError:
-                            print("Código inválido!")
-                            return
+    cpf = input("Digite o CPF do cliente: ")
+    try:
+        codigo_item = int(input("Digite o código do item a ser devolvido: "))
+    except ValueError:
+        print("Código inválido!")
+        return
 
-                        cliente = None
-                        for c in locadora.getClientes():
-                            if c.getCpf() == cpf:
-                                cliente = c
-                                break
+    cliente = None
+    for c in locadora.getClientes():
+        if c.getCpf() == cpf:
+            cliente = c
+            break
 
-                        if cliente is None:
-                            print("Cliente não encontrado!")
-                            return
+    if cliente is None:
+        print("Cliente não encontrado!")
+        return
 
-                        item = None
-                        for i in cliente.getItensLocados():
-                            if i.getCodigo() == codigo_item:
-                                item = i
-                                break
+    item = None
+    for i in cliente.getItensLocados():
+        if i.getCodigo() == codigo_item:
+            item = i
+            break
 
-                        if item is None:
-                            print("Esse item não está alugado por este cliente.")
-                            return
+    if item is None:
+        print("Esse item não está alugado por este cliente.")
+        return
 
-                        if cliente.devolver(item):
-                            print(f"Item '{item.getTitulo()}' devolvido com sucesso!")
-                        else:
-                            print("Erro ao devolver item.")
+    if cliente.devolver(item):
+        print(f"Item '{item.getTitulo()}' devolvido com sucesso!")
+    else:
+        print("Erro ao devolver item.")
+
+def listar_itens_locados(locadora):
+    cpf = input("Digite o CPF do cliente: ")
+    cliente = None
+    for c in locadora.getClientes():
+        if c.getCpf() == cpf:
+            cliente = c
+            break
+
+    if cliente is None:
+        print("Cliente não encontrado!")
+        return
+
+    cliente.listarItensLocados()
