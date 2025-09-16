@@ -125,7 +125,6 @@ class Locadora:
         print(f"Item {item.getTitulo()} cadastrado!")
 
     def listarClientes(self):
-        print("•═❀═• CLIENTES CADASTRADOS •═❀═•")
         if len(self.__clientes) > 0:
             for cliente in self.__clientes:
                 print(f"- {cliente.getNome()} (CPF: {cliente.getCpf()})")
@@ -133,7 +132,6 @@ class Locadora:
             print("Nenhum cliente cadastrado.")
             
     def listarItens(self):
-        print("\n •═❀═• ITENS NA LOCADORA •═❀═•")
         if len(self.__itens) > 0:
             for item in self.__itens:
                 status = "Disponível" if item.getDisponivel() else "Alugado"

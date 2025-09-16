@@ -50,3 +50,43 @@ def cadastrar_jogo(locadora):
 def menu_alugardevolver():
     print("︿︿︿︿︿ 〔MENU ALUGAR/DEVOLVER〕 ︿︿︿︿︿")
     print(" 1- Alugar \n 2- Devolver \n 0- Sair ")
+
+def alugar_item(locadora):
+    cpf = input("Digite o CPF do cliente: ")
+    try:
+        locadora.listarItens()
+        codigo_item = int(input("\n \n Digite o código do item a ser alugado: "))
+    except ValueError:
+        print("Código inválido!")
+        LP()
+        return
+    
+    
+    cliente = None
+    for c in locadora.getClientes():
+        if c.getCpf() == cpf:
+            cliente = c
+            break
+
+    if cliente is None:
+        print("Cliente não encontrado!")
+        LP()
+        return
+
+    item = None
+    for i in locadora.getItens():
+        if i.getCodigo() == codigo_item:
+            item = i
+            break
+
+    if item is None:
+        print("Item não encontrado!")
+        LP()
+        return
+
+    if cliente.locar(item):
+        print(f"Item '{item.getTitulo()}' alugado com sucesso para {cliente.getNome()}!")
+        LP()
+    else:
+        print("Esse item já está alugado.")
+        LP()

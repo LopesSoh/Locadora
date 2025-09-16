@@ -61,6 +61,23 @@ while True:
                     print("Entrada inválida, digite um número!")
                     LP()
                     continue
+            match opcao3:
+                case 1:
+                    LP()
+                    print("ALUGAR ITEM")
+                    alugar_item(locadora)
+                    LP()
+                
+                case 2:
+                    pass
+
+                case 0:
+                    LP()
+                    break
+
+                case _:
+                    print("Opção inválida! Tente novamente.")
+                    LP()
                 
         case 4: 
             LP()
