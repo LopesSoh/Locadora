@@ -47,3 +47,6 @@ def cadastrar_jogo(locadora):
     except ValueError:
         print("Entrada inválida!")
 
+def menu_alugardevolver():
+    print("︿︿︿︿︿ 〔MENU ALUGAR/DEVOLVER〕 ︿︿︿︿︿")
+    print(" 1- Alugar \n 2- Devolver \n 0- Sair ")

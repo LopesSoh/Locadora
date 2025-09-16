@@ -52,7 +52,16 @@ while True:
             locadora.listarClientes()
             LP()
         case 3: 
-            pass
+            LP()
+            menu_alugardevolver()
+            try:
+                opcao3 = int(input("Escolha uma opção: "))
+            except ValueError:
+                    LP()
+                    print("Entrada inválida, digite um número!")
+                    LP()
+                    continue
+                
         case 4: 
             LP()
             locadora.listarItens()
