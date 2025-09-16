@@ -123,6 +123,12 @@ class Locadora:
     def cadastrarItem(self, item: Item):
         self.__itens.append(item)
         print(f"Item {item.getTitulo()} cadastrado!")
+    
+    def getClientes(self):
+        return self.__clientes
+
+    def getItens(self):
+        return self.__itens
 
     def listarClientes(self):
         if len(self.__clientes) > 0:

@@ -16,6 +16,7 @@ while True:
     match opcao:
         case 1: 
             while True:
+                LP()
                 menu_cadastro()
                 try:
                     opcao2 = int(input("Escolha uma opção: "))
@@ -48,36 +49,43 @@ while True:
                         break
 
         case 2: 
-            LP()
-            locadora.listarClientes()
-            LP()
+
+            while True:
+                LP()
+                locadora.listarClientes()
+                LP()
+                break
         case 3: 
-            LP()
-            menu_alugardevolver()
-            try:
-                opcao3 = int(input("Escolha uma opção: "))
-            except ValueError:
-                    LP()
-                    print("Entrada inválida, digite um número!")
-                    LP()
-                    continue
-            match opcao3:
-                case 1:
-                    LP()
-                    print("ALUGAR ITEM")
-                    alugar_item(locadora)
-                    LP()
-                
-                case 2:
-                    pass
+            while True: 
+                LP()
+                menu_alugardevolver()
+                try:
+                    opcao3 = int(input("Escolha uma opção: "))
+                except ValueError:
+                        LP()
+                        print("Entrada inválida, digite um número!")
+                        LP()
+                        continue
+                match opcao3:
+                    case 1:
+                        LP()
+                        print("ALUGAR ITEM")
+                        alugar_item(locadora)
+                        LP()
+                    
+                    case 2:
+                        LP()
+                        print("DEVOLVER ITEM")  
+                        devolver_item(locadora)
+                        LP()
 
-                case 0:
-                    LP()
-                    break
+                    case 0:
+                        LP()
+                        break
 
-                case _:
-                    print("Opção inválida! Tente novamente.")
-                    LP()
+                    case _:
+                        print("Opção inválida! Tente novamente.")
+                        LP()
                 
         case 4: 
             LP()

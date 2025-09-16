@@ -90,3 +90,36 @@ def alugar_item(locadora):
     else:
         print("Esse item já está alugado.")
         LP()
+
+def devolver_item(locadora):
+                        cpf = input("Digite o CPF do cliente: ")
+                        try:
+                            codigo_item = int(input("Digite o código do item a ser devolvido: "))
+                        except ValueError:
+                            print("Código inválido!")
+                            return
+
+                        cliente = None
+                        for c in locadora.getClientes():
+                            if c.getCpf() == cpf:
+                                cliente = c
+                                break
+
+                        if cliente is None:
+                            print("Cliente não encontrado!")
+                            return
+
+                        item = None
+                        for i in cliente.getItensLocados():
+                            if i.getCodigo() == codigo_item:
+                                item = i
+                                break
+
+                        if item is None:
+                            print("Esse item não está alugado por este cliente.")
+                            return
+
+                        if cliente.devolver(item):
+                            print(f"Item '{item.getTitulo()}' devolvido com sucesso!")
+                        else:
+                            print("Erro ao devolver item.")
